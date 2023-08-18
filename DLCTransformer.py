@@ -83,12 +83,12 @@ class DLCTransformer:
         basis_vector_h_coord = self.get_median_coordinate(
             df=df,
             marker=basis_vector_h_marker,
-            dlc_threshold=dlc_immobile_marker_threshold,
+            dlc_immobile_marker_threshold=dlc_immobile_marker_threshold,
         )
         basis_vector_v_coord = self.get_median_coordinate(
             df=df,
             marker=basis_vector_v_marker,
-            dlc_threshold=dlc_immobile_marker_threshold,
+            dlc_immobile_marker_threshold=dlc_immobile_marker_threshold,
         )
 
         # calculate basis vector transformation
