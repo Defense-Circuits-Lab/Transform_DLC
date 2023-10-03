@@ -1,18 +1,24 @@
 import pandas as pd
 import numpy as np
 from read_config import read_config
-
+from typing import Optional
 
 class DLCTransformer:
-    def __init__(self, dlc_filepath: str, config_filepath: str):
+    def __init__(self, config_filepath: str, dlc_filepath: Optional[str] = None, dlc_df: Optional[pd.DataFrame] = None):
         self.config = read_config(config_filepath)
         self.dlc_filepath = dlc_filepath
-        if self.dlc_filepath.endswith("h5"):
-            self.dlc_df = pd.read_hdf(dlc_filepath, header=[0, 1, 2], index_col=0)
-        elif self.dlc_filepath.endswith("csv"):
-            self.dlc_df = pd.read_csv(dlc_filepath, header=[0, 1, 2], index_col=0)
+        if self.dlc_filepath is not None:
+            if self.dlc_filepath.endswith("h5"):
+                self.dlc_df = pd.read_hdf(dlc_filepath, header=[0, 1, 2], index_col=0)
+            elif self.dlc_filepath.endswith("csv"):
+                self.dlc_df = pd.read_csv(dlc_filepath, header=[0, 1, 2], index_col=0)
+            else:
+                raise ValueError("DeepLabCut file must be .h5 or .csv")
         else:
-            raise ValueError("DeepLabCut file must be .h5 or .csv")
+            if dlc_df is not None:
+                self.dlc_df = dlc_df
+            else:
+                raise ValueError("One of the arguments dlc_filepath or dlc_df must be specified")
 
         # read metadata
         self.origin_marker = self.config["origin_marker"]
