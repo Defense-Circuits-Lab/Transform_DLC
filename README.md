@@ -1,9 +1,9 @@
 # Easy transformation and scaling of DeepLabCut Data
-DeepLabCut is a widely used markerless pose estimation toolbox in behavioral science. The output of DeepLabCut is coordinates in pixels for each frame for each marker. However, in most cases the coordinates first need to be translated (i.e. adapted to the coordinate-space of the behavioral maze) and scaled (e.g. to cm) to enable meaningful behavioral quantification. Notably, the code in this repository is basic and an implementation of translation as well as scaling as an optional function in the DeepLabCut toolbox itself would be appreciated.
+DeepLabCut is a widely used markerless pose estimation toolbox in behavioral science. The output of DeepLabCut is coordinates in pixels for each frame for each marker. However, in most cases the coordinates first need to be translated (i.e. adapted to the coordinate-space of the behavioral maze) and scaled (e.g. to cm) to enable meaningful behavioral quantification. Notably, the code in this repository is basic and an implementation of translation as well as scaling as an optional function in the DeepLabCut toolbox itself would be a better solution then running yet another modul in data preprocessing.
 
-The Transform_DLC repository takes care of this specific task: Take DeepLabCut dataframes as the input and output transformed and scaled DeepLabCut dataframes. Requirements for this transformation and scaling are that the behavioral maze has to be rectangular and its corners have to be tracked with DeepLabCut.
+The Transform_DLC repository takes care of this specific task: IT takes DeepLabCut dataframes as the input and outputs transformed and scaled DeepLabCut dataframes. Requirements for this transformation and scaling are that the behavioral maze or a reference has to be rectangular and its corners have to be tracked with DeepLabCut.
 
-The code needs specific parameters such as the names of the origin, horizontal and vertical basis vector markers, as well as the minimal needed likelihood for those markers  to be included in the position estimation. If scaling is desired, specify horizontal and vertical scaling factors
+Parameters of Transform_DLC are the names of the origin, horizontal and vertical basis vector markers, as well as the minimal needed likelihood for those markers to be included in the position estimation. If scaling is desired, horizontal and vertical scaling factors have to be specified, too.
 
 
 
